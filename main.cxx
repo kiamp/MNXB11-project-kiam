@@ -1,15 +1,12 @@
 
 #include <iostream>
-int main(int argc, char *argv[]) {
-  std::cout << "I am just a code template, you need to implement the "
-               "functionality you want to use yourself!"
-            << std::endl;
+#include "/home/marheb/git/MNXB11-project/include/temp_vs_years.h"
 
-  std::cout << "We were passed " << argc
-            << " command line arguments, the first of which was " << argv[0]
-            << std::endl;
-  std::cout << "With a good CLI library, we could use the command line "
-               "arguments to make a useful program."
-            << std::endl;
+int main() {
+
+  temp_vs_years t_vs_y("/home/marheb/git/MNXB11-project/datasets/lund_cleaned.txt");
+  t_vs_y.ReadFile();
+  t_vs_y.GetYearlyAverage();
+  t_vs_y.CreateHistogram();
   return 0;
 }
