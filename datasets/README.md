@@ -13,6 +13,9 @@ website, <https://www.smhi.se>
 The files were downloaded at the page:
 <https://www.smhi.se/data/meteorologi/ladda-ner-meteorologiska-observationer/#param=airtemperatureInstant,stations=core>
 
+Also downloaded dataset for rain amount in Lund from:
+<https://www.smhi.se/data/hitta-data-for-en-plats/ladda-ner-vaderobservationer/precipitation24HourSum/53430>
+
 They represent the _air temperature_ collected by a given station, excluding 
 the last three months at the time these datasets where downloaded.
 
