@@ -2,9 +2,20 @@ CXX := g++
 CXXWARNINGS := -Wall -Wextra -Werror
 CXXOPT := -O3
 CXXSTD := -std=c++17
-INCLUDES := -I include
+
+#added by Philine ______________ so that root can be used
+ROOTCFLAGS := $(shell root-config --cflags)
+ROOTLIBS := $(shell root-config --libs)
+
+#!add your files here:
+OBJS := src/temp_vs_years.o
+#____________________
+
+
+INCLUDES := -I include $(ROOTCFLAGS)
 CXXFLAGS := $(CXXWARNINGS) $(CXXSTD) $(CXXOPT) $(INCLUDES)
-LDFLAGS :=
+LDFLAGS := $(ROOTLIBS) #added by Philine: adds ROOT libraries for linking
+
 
 .PHONY: all clean
 
@@ -16,7 +27,7 @@ all: main
 #
 # Remove the Example object file when you are done looking at it, it doesn't
 # contribute to the executable!
-main: main.cxx src/Example.o
+main: main.cxx $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
 src/%.o: src/%.cxx
