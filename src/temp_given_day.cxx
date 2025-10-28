@@ -73,6 +73,7 @@ void temp_given_day::GetAverageTemp_1() {
 }
 
 void temp_given_day::GetAverageTemp_2() {
+    
     unique_years_2.clear(); //so that nothing from earlier is included 
     avg_temp_2.clear();
     
@@ -101,15 +102,15 @@ void temp_given_day::GetAverageTemp_2() {
 }
 
 void temp_given_day::CreateHistogram() {
+    std::cout << "Period 1: " << avg_temp_1.size() << " entries" << std::endl;
+    std::cout << "Period 2: " << avg_temp_2.size() << " entries" << std::endl;
     // first period
-    auto *histogram_1 = new TH1D("histogram 1", "Temperature on 15/02 from 1863-1913 ;Temperature [#circC];Entries", 15, -15, 15);
+    auto *histogram_1 = new TH1D("histogram1", "Temperature on 15/02 from 1863-1913 ;Temperature [#circC];Entries", 20, -15, 15);
     histogram_1->SetFillColor(kBlue +1); //colour of bars is blue
      histogram_1->SetLineColor(kBlack); //outline black
     for (size_t i =0 ; i< unique_years_1.size(); ++i) {
         histogram_1->Fill(avg_temp_1[i]);
     }
-
-    // std::cout << unique_years_1;
 
     auto canvas1 = new TCanvas("canvas1","",800,600);
     histogram_1->Draw();
@@ -121,14 +122,12 @@ void temp_given_day::CreateHistogram() {
     canvas1->SaveAs("temperature_given_day_1.pdf");
 
     // repeat for second period
-    auto *histogram_2 = new TH1D("histogram 2", "Temperature on 15/02 from 1972-2022 ;Temperature [#circC];Entries", 15, -20, 40);
+    auto *histogram_2 = new TH1D("histogram2", "Temperature on 15/02 from 1972-2022 ;Temperature [#circC];Entries", 20, -20, 40);
     histogram_2->SetFillColor(kBlue +1); //colour of bars is blue
      histogram_2->SetLineColor(kBlack); //outline black
     for (size_t j =0 ; j< unique_years_2.size(); ++j) {
         histogram_2->Fill(avg_temp_2[j]);
     }
-
-    // std::cout << unique_years_2;
 
     auto canvas2 = new TCanvas("canvas2","",800,600);
     histogram_2->Draw();

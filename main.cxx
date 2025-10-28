@@ -17,6 +17,7 @@ int main() {
   temp_given_day t_vs_e("/home/deboer/git/MNXB11-project/datasets/lund_cleaned.txt");
   t_vs_e.ReadFile();
   t_vs_e.GetAverageTemp_1();
+  t_vs_e.GetAverageTemp_2();
   t_vs_e.CreateHistogram();
 
   return 0;
