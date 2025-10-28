@@ -101,25 +101,19 @@ void temp_given_day::GetAverageTemp_2() {
 }
 
 void temp_given_day::CreateHistogram() {
-    
-    int min_year = 1863;
-    int max_year = 1913;
-    int nbins = max_year - min_year + 1; //number of bins
 
-    TH1D *histogram = new TH1D("histogram", "Temperature on 15/02 from 1863 till 1913", nbins, min_year -0.5, max_year+0.5);
-
+    auto *histogram = new TH1I("histogram", "Temperature;Temperature [#circC];Entries", 300, -20, 40);
+    histogram->SetFillColor(kBlue +1);
     for (size_t i =0 ; i< unique_years_1.size(); ++i) {
         histogram->SetBinContent(i+1, avg_temp_1[i]); //fill bins with values
     }
 
-    auto canvas1 = new TCanvas("c1","",800,600);
+    auto canvas1 = new TCanvas("canvas1","",800,600);
     histogram->Draw();
 
     TLatex text; //for printing on canvas
     text.SetNDC(); //normalized coordinates (0-1) starts in lower left corner
     text.SetTextSize(0.05);
-    // text.DrawLatex(0.2, 0.2, Form("slope: %.4f #circC/Year", slope));
-
 
     canvas1->SaveAs("temperature_given_day_1.pdf");
 }
