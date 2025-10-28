@@ -1,0 +1,127 @@
+#include "/home/deboer/git/MNXB11-project/include/temp_given_day.h"
+#include <iostream>
+#include <fstream> //for reading the file
+#include <numeric>
+
+//for ROOT 
+#include "TCanvas.h"
+#include "TH1D.h"
+#include "TF1.h"
+#include "TLatex.h"
+
+
+// default constructor - ROOT needs the default one where everything is set to 0
+temp_given_day::temp_given_day() {}
+//constructor
+temp_given_day::temp_given_day(const std::string &filename) : inputFilename(filename) {} //this one is used in main
+
+
+void temp_given_day::ReadFile() {
+    std::ifstream file("/home/marheb/git/MNXB11-project/datasets/lund_cleaned.txt"); //! needs to be changed if position of lund_cleaned.txt is moved 
+    std::string date, time; //initialize variables
+    double degrees;
+
+    std::string header; //gets first line 
+    std::getline(file, header); //skips first line
+
+    while (file >> date >> time >> degrees) { //iterates through file 
+        int year = std::stoi(date.substr(0, 4)); //extracts the year from date 
+        int month = std::stoi(date.substr(5, 2)); //extracts the month from date 
+        int day = std::stoi(date.substr(8, 2)); //extracts the day from date 
+        
+        if ((month == 02) && (day == 15) && (year = 1863)) { //date and first year of period
+            if (year>1913) break; //final year of the period
+
+            years_1.push_back(year);
+            temperatures_1.push_back(degrees);
+        }
+
+        if ((month == 02) && (day==15) && (year = 1972)) { //date and first year of period
+            if (year>2022) break; //final year of the period
+
+            years_2.push_back(year);
+            temperatures_2.push_back(degrees);
+        };
+    }
+
+    file.close();
+}
+
+void temp_given_day::GetAverageTemp_1() {
+    unique_years_1.clear(); //so that nothing from earlier is included 
+    avg_temp_1.clear();
+    
+    double sum = 0.0; //initialize sum and count
+    int count = 0;
+
+    int first_year = 1863;
+
+    for (size_t i=0; i < years_1.size(); i++) {
+        if (years_1[i] == first_year) { //sums all temperatures from one year
+            sum += temperatures_1[i];
+            count++; //count the amount of entries from that year
+        } 
+        else {
+            avg_temp_1.push_back(sum/count); //adds mean to avg_years_1
+            unique_years_1.push_back(first_year);
+
+            first_year = years_1[i]; //goes to next year
+            count = 1; //count set back to 1 (not 0 because we are already in the loop)
+            sum = temperatures_1[i]; //adds first temperature in new year to sum
+        }
+    }
+    //last year needs to be added manually
+    avg_temp_1.push_back(sum/count);
+    unique_years_1.push_back(first_year);
+}
+
+void temp_given_day::GetAverageTemp_2() {
+    unique_years_2.clear(); //so that nothing from earlier is included 
+    avg_temp_2.clear();
+    
+    double sum = 0.0; //initialize sum and count
+    int count = 0;
+
+    int first_year = 1972;
+
+    for (size_t i=0; i < years_2.size(); i++) {
+        if (years_2[i] == first_year) { //sums all temperatures from one year
+            sum += temperatures_2[i];
+            count++; //count the amount of entries from that year
+        } 
+        else {
+            avg_temp_2.push_back(sum/count); //adds mean to avg_years_1
+            unique_years_2.push_back(first_year);
+
+            first_year = years_2[i]; //goes to next year
+            count = 1; //count set back to 1 (not 0 because we are already in the loop)
+            sum = temperatures_2[i]; //adds first temperature in new year to sum
+        }
+    }
+    //last year needs to be added manually
+    avg_temp_2.push_back(sum/count);
+    unique_years_2.push_back(first_year);
+}
+
+void temp_given_day::CreateHistogram() {
+    int nbins = unique_years_1.size(); //number of bins
+    int min_year = 1863;
+    int max_year = 1913;
+
+    TH1D *histogram = new TH1D("histogram", "Temperature on 15/02 from 1863 till 1913", nbins, min_year -0.5, max_year+0.5);
+
+    for (size_t i =0 ; i< unique_years_1.size(); ++i) {
+        histogram->SetBinContent(i+1, avg_temp_1[i]); //fill bins with values
+    }
+
+    auto canvas1 = new TCanvas("c1","",800,600);
+    histogram->Draw();
+
+    TLatex text; //for printing on canvas
+    text.SetNDC(); //normalized coordinates (0-1) starts in lower left corner
+    text.SetTextSize(0.05);
+    // text.DrawLatex(0.2, 0.2, Form("slope: %.4f #circC/Year", slope));
+
+
+    canvas1->SaveAs("temperature_given_day_1.pdf");
+}

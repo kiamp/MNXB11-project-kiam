@@ -8,7 +8,7 @@ ROOTCFLAGS := $(shell root-config --cflags)
 ROOTLIBS := $(shell root-config --libs)
 
 #!add your files here:
-OBJS := src/temp_vs_years.o
+OBJS := src/temp_vs_years.o src/temp_given_day.o
 #____________________
 
 

@@ -1,4 +1,4 @@
-#include "/home/marheb/git/MNXB11-project/include/temp_vs_years.h"
+#include "/home/deboer/git/MNXB11-project/include/temp_vs_years.h"
 #include <iostream>
 #include <fstream> //for reading the file
 #include <numeric>
@@ -17,7 +17,7 @@ temp_vs_years::temp_vs_years(const std::string &filename) : inputFilename(filena
 
 
 void temp_vs_years::ReadFile() {
-    std::ifstream file("/home/marheb/git/MNXB11-project/datasets/lund_cleaned.txt"); //! needs to be changed if position of lund_cleaned.txt is moved 
+    std::ifstream file("/home/deboer/git/MNXB11-project/datasets/lund_cleaned.txt"); //! needs to be changed if position of lund_cleaned.txt is moved 
     std::string date, time; //initialize variables
     double degrees;
 
