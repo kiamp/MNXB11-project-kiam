@@ -122,7 +122,7 @@ void temp_given_day::CreateHistogram() {
     canvas1->SaveAs("temperature_given_day_1.pdf");
 
     // repeat for second period
-    auto *histogram_2 = new TH1D("histogram2", "Temperature on 15/02 from 1972-2022 ;Temperature [#circC];Entries", 50, -20, 40);
+    auto *histogram_2 = new TH1D("histogram2", "Temperature on 15/02 from 1972-2022 ;Temperature [#circC];Entries", 50, -15, 15);
     histogram_2->SetFillColor(kBlue +1); //colour of bars is blue
      histogram_2->SetLineColor(kBlack); //outline black
     for (size_t j =0 ; j< unique_years_2.size(); ++j) {
