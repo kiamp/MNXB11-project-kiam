@@ -102,8 +102,9 @@ void temp_given_day::GetAverageTemp_2() {
 
 void temp_given_day::CreateHistogram() {
 
-    auto *histogram = new TH1D("histogram", "Temperature;Temperature [#circC];Entries", 300, -20, 40);
-    histogram->SetFillColor(kBlue +1);
+    auto *histogram = new TH1D("histogram", "Temperature;Temperature [#circC];Entries", 300, -15, 15);
+    histogram->SetFillColor(kBlue +1); //colour of bars is blue
+     histogram->SetLineColor(kBlack); //outline black
     for (size_t i =0 ; i< unique_years_1.size(); ++i) {
         histogram->Fill(avg_temp_1[i]);
     }
@@ -114,6 +115,12 @@ void temp_given_day::CreateHistogram() {
     TLatex text; //for printing on canvas
     text.SetNDC(); //normalized coordinates (0-1) starts in lower left corner
     text.SetTextSize(0.05);
+
+    double mean = histogram->GetMean();
+    double stdev = histogram->GetRMS();
+
+    text.DrawLatex(0.6, 0.85, Form("Mean = %.2f #circC", mean));
+    text.DrawLatex(0.6, 0.8, Form("StdDev = %.2f #circC", stdev));
 
     canvas1->SaveAs("temperature_given_day_1.pdf");
 }
