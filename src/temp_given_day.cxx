@@ -17,7 +17,7 @@ temp_given_day::temp_given_day(const std::string &filename) : inputFilename(file
 
 
 void temp_given_day::ReadFile() {
-    std::ifstream file("/home/marheb/git/MNXB11-project/datasets/lund_cleaned.txt"); //! needs to be changed if position of lund_cleaned.txt is moved 
+    std::ifstream file("/home/deboer/git/MNXB11-project/datasets/lund_cleaned.txt"); //! needs to be changed if position of lund_cleaned.txt is moved 
     std::string date, time; //initialize variables
     double degrees;
 
@@ -29,19 +29,16 @@ void temp_given_day::ReadFile() {
         int month = std::stoi(date.substr(5, 2)); //extracts the month from date 
         int day = std::stoi(date.substr(8, 2)); //extracts the day from date 
         
-        if ((month == 02) && (day == 15) && (year = 1863)) { //date and first year of period
-            if (year>1913) break; //final year of the period
-
-            years_1.push_back(year);
-            temperatures_1.push_back(degrees);
+        if ((month == 2) && (day == 15)) {
+            if (year >= 1863 && year <= 1913) {
+                years_1.push_back(year);
+                temperatures_1.push_back(degrees);
+            } else if (year >= 1972 && year <= 2022) {
+                years_2.push_back(year);
+                temperatures_2.push_back(degrees);
+            }
         }
 
-        if ((month == 02) && (day==15) && (year = 1972)) { //date and first year of period
-            if (year>2022) break; //final year of the period
-
-            years_2.push_back(year);
-            temperatures_2.push_back(degrees);
-        };
     }
 
     file.close();
@@ -104,9 +101,10 @@ void temp_given_day::GetAverageTemp_2() {
 }
 
 void temp_given_day::CreateHistogram() {
-    int nbins = unique_years_1.size(); //number of bins
+    
     int min_year = 1863;
     int max_year = 1913;
+    int nbins = max_year - min_year + 1; //number of bins
 
     TH1D *histogram = new TH1D("histogram", "Temperature on 15/02 from 1863 till 1913", nbins, min_year -0.5, max_year+0.5);
 
