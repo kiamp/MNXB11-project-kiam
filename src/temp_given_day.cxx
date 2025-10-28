@@ -109,18 +109,14 @@ void temp_given_day::CreateHistogram() {
         histogram->Fill(avg_temp_1[i]);
     }
 
+    // std::cout << unique_years_1;
+
     auto canvas1 = new TCanvas("canvas1","",800,600);
     histogram->Draw();
 
     TLatex text; //for printing on canvas
     text.SetNDC(); //normalized coordinates (0-1) starts in lower left corner
     text.SetTextSize(0.05);
-
-    double mean = histogram->GetMean();
-    double stdev = histogram->GetRMS();
-
-    text.DrawLatex(0.6, 0.85, Form("Mean = %.2f #circC", mean));
-    text.DrawLatex(0.6, 0.8, Form("StdDev = %.2f #circC", stdev));
 
     canvas1->SaveAs("temperature_given_day_1.pdf");
 }
