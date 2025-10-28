@@ -105,7 +105,7 @@ void temp_given_day::CreateHistogram() {
     auto *histogram = new TH1I("histogram", "Temperature;Temperature [#circC];Entries", 300, -20, 40);
     histogram->SetFillColor(kBlue +1);
     for (size_t i =0 ; i< unique_years_1.size(); ++i) {
-        histogram->SetBinContent(i+1, avg_temp_1[i]); //fill bins with values
+        histogram->Fill(-3.2);
     }
 
     auto canvas1 = new TCanvas("canvas1","",800,600);
