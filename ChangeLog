@@ -63,4 +63,13 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 
 	* Added the changes I made to this file
 
+2025-10-29 Kiam Persson <li8211pe-s@student.lu.se>
+
+	Added polished code to plot a years average daily rainfall against years.
+
+	* Added header include/rain_vs_years.h where the class RainVsYear is defined.
+	* Added sourcefile src/rain_vs_years.cxx where the function ReadAndDraw is defined.
+	* ReadAndDraw reads the contents of a parameter file with each date and it's rainfall, and draws a histogram showing the average daily rainfall for each year.
+	* Added call to ReadAndDraw in main.cxx, with datasets/lund_cleaned_rain.txt as parameter.
+	* Histogram result saved in rain_vs_years.h
 
