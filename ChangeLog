@@ -13,18 +13,40 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* Fine grained description of important things that you want to communicate
 
 
-# Example (entries from newest to oldest):
+# Entries from newest to oldest:
 
-2025-09-26 Florido Paganelli  <florido.paganelli@fysik.lu.se>
+2025-10-23 Marie-Philine Hebel  <ma3648he@student.lu.se>
 
-	Reviewing content of project template
+	Cleaning up the raw data for temperature in Lund. 
 
-	* Added ChangeLog.txt with comments and examples
+	* Python code preprocessing.py.
+	* Instructions how to reuse the code are added as comments. It is reusable for other datasets but certain variables have to be changed manually inside the code.
+	* The cleaned data can be found at datasets/lund_cleaned.txt
 
-2025-09-25 Florido Paganelli  <florido.paganelli@fysik.lu.se>
+2025-10-24 Marie-Philine Hebel  <ma3648he@student.lu.se>
 
-	Reviewing content of project template
+	Cleaning up the raw data for rainfall in Lund. 
 
-	* Checking directory structure
-	* Added Workplan.md
+	* Python code preprocessing.py updated to work for the rain raw data
+	* The cleaned data can be found at datasets/lund_cleaned_rain.txt
+	* the unused raw datasets were removed
+
+2025-10-24 Marie-Philine Hebel  <ma3648he@student.lu.se>
+
+	Implementation of code to plot the yearly average against years. 
+
+	* The header file include/temp_vs_years.h defines the class temp_vs_years
+	* The functions are written in src/temp_vs_years.cxx
+	* The examples in main.cxx were removed and the defined functions were called. 
+	* The histogram was saved as a pdf under temperature_vs_years.pdf
+
+2025-10-29 Marie-Philine Hebel  <ma3648he@student.lu.se>
+
+	ChangeLog updated 
+
+	* I added all the major changes that were made by me (Marie-Philine). 
+	* Renamed the original changelog with examples to ChangeLog_example, this can be deleted later
+
+
+
 
