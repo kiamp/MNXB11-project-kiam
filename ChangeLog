@@ -13,7 +13,7 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* Fine grained description of important things that you want to communicate
 
 
-# Entries from newest to oldest:
+# Entries from oldest to newest:
 
 2025-10-23 Marie-Philine Hebel  <ma3648he@student.lu.se>
 
@@ -33,12 +33,22 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 
 2025-10-24 Marie-Philine Hebel  <ma3648he@student.lu.se>
 
-	Implementation of code to plot the yearly average against years. 
+	Implementation of code to plot the yearly average temperature against years. 
 
 	* The header file include/temp_vs_years.h defines the class temp_vs_years
 	* The functions are written in src/temp_vs_years.cxx
 	* The examples in main.cxx were removed and the defined functions were called. 
 	* The histogram was saved as a pdf under temperature_vs_years.pdf
+
+2025-10-28 Dominique Iris de Boer <do6140de-s@student.lu.se>
+
+	Implementation of code to plot histogram of average temperature on 15/02 against entries, for two periods.
+
+	* The header file include/temp_given_day.h includes the class temp_given_day
+	* The functions are defined in temp_given_day.cxx
+	* Added the cxx file to Makefile
+	* Added part to main to call on functions
+	* Two histograms were saved as pdf's
 
 2025-10-29 Marie-Philine Hebel  <ma3648he@student.lu.se>
 
@@ -47,6 +57,10 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* I added all the major changes that were made by me (Marie-Philine). 
 	* Renamed the original changelog with examples to ChangeLog_example, this can be deleted later
 
+2025-10-29 Dominique Iris de Boer <do6140de-s@student.lu.se>
 
+	Changelog updated
+
+	* Added the changes I made to this file
 
 
