@@ -16,7 +16,11 @@ rain_given_day::rain_given_day(const std::string &filename) : inputFilename(file
 
 //just going through the file and appending years_1, rain_1, years_2, rain_2 if we are in the selected 50 year period and the date is 15.2
 void rain_given_day::ReadFile() {
-    std::ifstream file("../datasets/lund_cleaned_rain.txt"); //! needs to be changed if position of lund_cleaned.txt is moved 
+    std::ifstream file(inputFilename); //! needs to be changed if position of lund_cleaned.txt is moved 
+     if (!file.is_open()) {
+        std::cerr << "Error: Could not open file " << inputFilename << std::endl;
+        return;
+    }
     std::string date; //initialize variables
     double rain;
 
@@ -36,6 +40,7 @@ void rain_given_day::ReadFile() {
                 years_2.push_back(year);
                 rain_2.push_back(rain);
             }
+            std::cout << "Read: " << date << " " << rain << std::endl;
         }
 
     }
@@ -47,7 +52,7 @@ void rain_given_day::CreateHistogram() {
     std::cout << "Period 1: " << rain_1.size() << " entries" << std::endl;
     std::cout << "Period 2: " << rain_2.size() << " entries" << std::endl;
     // first period
-    auto *histogram_1 = new TH1D("histogram1", "Rainfall on 15/02 from 1863-1913 ;Rainfall [#circC];Entries", 50, -15, 15);
+    auto *histogram_1 = new TH1D("histogram1", "Rainfall on 15/02 from 1863-1913 ;Rainfall [#circC];Entries", 50, 0, 12);
     histogram_1->SetFillColor(kBlue +1); //colour of bars is blue
     histogram_1->SetLineColor(kBlack); //outline black
     for (size_t i =0 ; i< years_1.size(); ++i) {
@@ -64,7 +69,7 @@ void rain_given_day::CreateHistogram() {
     canvas1->SaveAs("rainfall_given_day_1.pdf");
 
     // repeat for second period
-    auto *histogram_2 = new TH1D("histogram2", "Rainfall on 15/02 from 1972-2022 ;Rainfall [#circC];Entries", 50, -15, 15);
+    auto *histogram_2 = new TH1D("histogram2", "Rainfall on 15/02 from 1972-2022 ;Rainfall [#circC];Entries", 50, 0, 12);
     histogram_2->SetFillColor(kBlue +1); //colour of bars is blue
     histogram_2->SetLineColor(kBlack); //outline black
     for (size_t j =0 ; j< years_2.size(); ++j) {
