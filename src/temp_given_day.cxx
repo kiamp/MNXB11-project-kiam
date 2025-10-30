@@ -106,7 +106,7 @@ void temp_given_day::CreateHistogram() {
     std::cout << "Period 2: " << avg_temp_2.size() << " entries" << std::endl;
     // first period
     auto *histogram_1 = new TH1D("histogram1", "Temperature on 15/02 from 1863-1913 ;Temperature [#circC];Entries", 50, -15, 15);
-    histogram_1->SetFillColor(kBlue +1); //colour of bars is blue
+    histogram_1->SetFillColorAlpha(kBlue +1, 0.4); //colour of bars is blue
      histogram_1->SetLineColor(kBlack); //outline black
     for (size_t i =0 ; i< unique_years_1.size(); ++i) {
         histogram_1->Fill(avg_temp_1[i]);
@@ -123,7 +123,7 @@ void temp_given_day::CreateHistogram() {
 
     // repeat for second period
     auto *histogram_2 = new TH1D("histogram2", "Temperature on 15/02 from 1972-2022 ;Temperature [#circC];Entries", 50, -15, 15);
-    histogram_2->SetFillColor(kBlue +1); //colour of bars is blue
+    histogram_2->SetFillColorAlpha(kRed +1, 0.4); //colour of bars is blue
      histogram_2->SetLineColor(kBlack); //outline black
     for (size_t j =0 ; j< unique_years_2.size(); ++j) {
         histogram_2->Fill(avg_temp_2[j]);
@@ -143,9 +143,9 @@ void temp_given_day::CreateHistogram() {
 
     histogram_1->Draw();
     histogram_2->Draw("SAME");
-    // gStyle->SetOptStat(0); // prevent new stats boxes
-    // histogram_1->SetTitle("Temperature on 15/02 in 1863-1913 (blue) & 1972-2022 (red)"); 
-    // histogram_2->SetTitle(""); //getting rid of the previous titles
+    gStyle->SetOptStat(0); // prevent new stats boxes
+    histogram_1->SetTitle(""); 
+    histogram_2->SetTitle(""); //getting rid of the previous titles
     
 
     // canvas3->Update(); // force ROOT to draw everything
