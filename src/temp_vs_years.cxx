@@ -96,7 +96,7 @@ void temp_vs_years::CreateHistogram() {
     }
     
     //linear fit
-    TF1* lin_fit = new TF1("lin_fit", "pol1", min_year +0.5, max_year +0.5); 
+    TF1* lin_fit = new TF1("lin_fit", "pol1", min_year -0.5, max_year +0.5); 
     histogram->Fit(lin_fit, "R"); // R=used specified range of histogram for fitting
     
     double slope = lin_fit->GetParameter(1); //gets slope of linear fit

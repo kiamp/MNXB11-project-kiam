@@ -60,7 +60,17 @@ RainVsYears::RainVsYears(const std::string &fileName) : dataFile(fileName) {}
 
   hist->SetLineColor(38);
 
+  //linear fit
+  TF1* lin_fit = new TF1("lin_fit", "pol1", firstYear, lastYear + 1);
+
+  hist->Fit(lin_fit, "R"); // R=used specified range of histogram for fitting
+    
+  double slope = lin_fit->GetParameter(1); //gets slope of linear fit
+
   TCanvas* c1 = new TCanvas("c1", "Average rainfall", 800, 600);
   hist->Draw("HIST c");
+  lin_fit->Draw();
+
+  
   c1->SaveAs("rain_vs_years.pdf");
 }
