@@ -23,6 +23,7 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* Instructions how to reuse the code are added as comments. It is reusable for other datasets but certain variables have to be changed manually inside the code.
 	* The cleaned data can be found at datasets/lund_cleaned.txt
 
+
 2025-10-23 Ivana Varsányiová <iv1308va@student.lu.se>
 
 	Cleaning up the raw data for temperature in Lund
@@ -30,6 +31,7 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* Preprocessed the raw data in Google colab using Python and the Pandas library
 	* Created file onlynumbers-smhi-opendata_1_53430_20231007_155558_Lund.csv, it is the original file with temperatures in Lund manually cleaned, so now it has only numbers in it and no words explaining the data
 	* Created three separate datasets, date_list.txt, temp_list.txt and time_list.txt, each has the corresponding data, one entry per line, no semicoloms separating them
+
 
 2025-10-24 Marie-Philine Hebel  <ma3648he@student.lu.se>
 
@@ -39,6 +41,7 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* The cleaned data can be found at datasets/lund_cleaned_rain.txt
 	* the unused raw datasets were removed
 
+
 2025-10-24 Marie-Philine Hebel  <ma3648he@student.lu.se>
 
 	Implementation of code to plot the yearly average temperature against years. 
@@ -47,6 +50,7 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* The functions are written in src/temp_vs_years.cxx
 	* The examples in main.cxx were removed and the defined functions were called. 
 	* The histogram was saved as a pdf under temperature_vs_years.pdf
+
 
 2025-10-28 Dominique Iris de Boer <do6140de-s@student.lu.se>
 
@@ -58,6 +62,7 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* Added part to main to call on functions
 	* Two histograms were saved as pdf's
 
+
 2025-10-29 Marie-Philine Hebel  <ma3648he@student.lu.se>
 
 	ChangeLog updated 
@@ -65,15 +70,18 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* I added all the major changes that were made by me (Marie-Philine). 
 	* Renamed the original changelog with examples to ChangeLog_example, this can be deleted later
 
+
 2025-10-29 Marie-Philine Hebel  <ma3648he@student.lu.se>
 
 	Absolute paths were changed to relative paths in all documents
+
 
 2025-10-29 Dominique Iris de Boer <do6140de-s@student.lu.se>
 
 	Changelog updated
 
 	* Added the changes I made to this file
+
 
 2025-10-29 Ivana Varsányiová <iv1308va@student.lu.se>
 
@@ -86,6 +94,7 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* Two histograms were saved as pdf's
 	* Changed the rain_given_day.cxx in a way that implements third histogram that combining the two periods into one graph, also saved as pdf
 
+
 2025-10-30 Kiam Persson <li8211pe-s@student.lu.se>
 
 	Added polished code to plot a years average daily rainfall against years.
@@ -96,6 +105,7 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* Added call to ReadAndDraw in main.cxx, with datasets/lund_cleaned_rain.txt as parameter.
 	* Histogram result saved in rain_vs_years.h
 
+
 2025-10-30 Marie-Philine Hebel  <ma3648he@student.lu.se>
 
 	Added a standard deviation to the temp_vs_years class
@@ -103,9 +113,22 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	*The standard deviation for all the temperature values is computed for each year and added to the plot 
 	*The plot without the standard deviation still exists. 
 
+
+2025-10-30 Dominique Iris de Boer  <do6140de-s@student.lu.se>
+
+	Added third graph to plot
+
+	* Added to my histogram function to make a third graph of the first two combined
+
+
 2025-10-30 Marie-Philine Hebel  <ma3648he@student.lu.se>
 
 	Updated main. Now all functions are called at once.
+
+
+2025-10-30 Dominique Iris de Boer  <do6140de-s@student.lu.se>
+
+	Created a README
 
 
 2025-10-30 Ivana Varsányiová <iv1308va@student.lu.se>
@@ -116,6 +139,7 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* Moved files date_list.txt, temp_list.txt and time_list.txt from the main repository to the datasets subrepository
 	* Deleted file smhi-opendata_5_53430_20251024_082317.csv from the datasets repository
 
+
 2025-10-30 Kiam Persson <li8211pe-s@student.lu.se>
 
 	Clang-formatted the remaining sourcefiles
@@ -124,9 +148,19 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* Formatted src/rain_given_day.cxx src/temp_vs_years.cxx and src/temp_given_day.cxx
 	* Removed src/practice.cxx
 
+
 2025-10-30 Marie-Philine Hebel  <ma3648he@student.lu.se>
 
 	Updated ChangeLog and Workplan. 
 
-	*I added my part of the Workplan (from Google docs) to the Worklan in this directory. 
+	* I added my part of the Workplan (from Google docs) to the Worklan in this directory. 
+
+
+2025-10-30 Dominique Iris de Boer  <do6140de-s@student.lu.se>
+
+	Updated ChangeLog, Workplan and perfected combined graph
+
+	* Made some final changes to my last graph
+	* Added the piece on data for a given day from our shared google doc to workplan.md
+	* Updated the Changelog with everything from today
 
