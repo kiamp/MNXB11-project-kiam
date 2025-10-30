@@ -171,3 +171,11 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* edited the path in the cxx files
 	* updated ChangeLog
 
+2025-10-30 Ivana Varsányiová <iv1308va@student.lu.se>
+
+	Added legend to 2 graphs, deleted files, updated authors, updated ChangeLog
+
+	* Changed the order of commands in main.cxx to add 2 legends to my individual graphs, added color legend to my combined graph
+	* Deleted 2 unused files and 4 .o files from the src subdirectory
+	* Added Dominique, Kiam and me to the Authors file
+	* Noted the changes in this file

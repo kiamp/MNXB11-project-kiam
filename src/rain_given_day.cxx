@@ -10,6 +10,7 @@
 #include "TH1D.h"
 #include "TLatex.h"
 #include "TStyle.h"
+#include "TLegend.h"
 
 // default constructor - ROOT needs the default one where everything is set to 0
 rain_given_day::rain_given_day() {}
@@ -99,11 +100,16 @@ void rain_given_day::CreateHistogram() {
   // combined histogram
   gStyle->SetOptStat(0);  // prevent new stats boxes
   histogram_1->SetTitle(
-      "Rainfall on 15/02 in 1863-1913 (blue) & 1972-2022 (red)");
+      "Rainfall on 15/02 in 1863-1913 & 1972-2022");
   histogram_2->SetTitle("");  // getting rid of the previous titles
   auto canvas3 = new TCanvas("combined canvas", "", 800, 600);
   histogram_1->Draw();
   histogram_2->Draw("SAME");
+  
+  auto legend = new TLegend(0.65, 0.75, 0.9, 0.9);
+  legend->AddEntry(histogram_1, "1863-1913", "f");
+  legend->AddEntry(histogram_2, "1972-2022", "f");
+  legend->Draw();
 
   canvas3->Update();  // force ROOT to draw everything
 

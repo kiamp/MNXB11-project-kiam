@@ -13,6 +13,12 @@ int main() {
   t_vs_y.GetYearlyAverage();
   t_vs_y.CreateHistogram();
 
+  //rain on a given day over the years
+  rain_given_day r_vs_e("./datasets/lund_cleaned_rain.txt");
+  r_vs_e.ReadFile();
+  r_vs_e.CreateHistogram();
+  return 0;
+
   //temperature on a given day over the years.
   temp_given_day t_vs_e("./datasets/lund_cleaned.txt");
   t_vs_e.ReadFile();
@@ -24,10 +30,7 @@ int main() {
   RainVsYears r_vs_y("./datasets/lund_cleaned_rain.txt");
   r_vs_y.ReadAndDraw();
     
-  rain_given_day r_vs_e("./datasets/lund_cleaned_rain.txt");
-  r_vs_e.ReadFile();
-  r_vs_e.CreateHistogram();
-  return 0;
+  
  }
 
 
