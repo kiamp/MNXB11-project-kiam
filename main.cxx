@@ -13,7 +13,7 @@ int main() {
    t_vs_y.CreateHistogram();
    return 0;
  }*/
-/*
+
 int main() {
 
   temp_given_day t_vs_e("./datasets/lund_cleaned.txt");
@@ -23,13 +23,13 @@ int main() {
   t_vs_e.CreateHistogram();
 
   return 0;
-}*/
-
-int main() {
-
-  rain_given_day r_vs_e("./datasets/lund_cleaned_rain.txt");
-  r_vs_e.ReadFile();
-  r_vs_e.CreateHistogram();
-
-  return 0;
 }
+
+// int main() {
+
+//   rain_given_day r_vs_e("./datasets/lund_cleaned_rain.txt");
+//   r_vs_e.ReadFile();
+//   r_vs_e.CreateHistogram();
+
+//   return 0;
+// }
