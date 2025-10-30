@@ -99,3 +99,11 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* Added changes to this change log
 	* Moved files date_list.txt, temp_list.txt and time_list.txt from the main repository to the datasets subrepository
 	* Deleted file smhi-opendata_5_53430_20251024_082317.csv from the datasets repository
+
+2025-10-30 Kiam Persson <li8211pe-s@student.lu.se>
+
+	Clang-formatted the remaining sourcefiles
+
+	* Formatted using the Google-style.
+	* Formatted src/rain_given_day.cxx src/temp_vs_years.cxx and src/temp_given_day.cxx
+	* Removed src/practice.cxx
