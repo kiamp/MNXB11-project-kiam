@@ -8,6 +8,8 @@
 #include <string>
 #include <TCanvas.h>
 #include <TAttLine.h>
+#include <TF1.h>
+#include <TLatex.h>
 
 struct RainVsYears : public TObject {
     RainVsYears();

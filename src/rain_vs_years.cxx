@@ -1,4 +1,4 @@
-#include "rain_vs_years.h"
+#include "../include/rain_vs_years.h"
 
 RainVsYears::RainVsYears() {}
 RainVsYears::RainVsYears(const std::string &fileName) : dataFile(fileName) {}
@@ -60,7 +60,22 @@ RainVsYears::RainVsYears(const std::string &fileName) : dataFile(fileName) {}
 
   hist->SetLineColor(38);
 
-  TCanvas* c1 = new TCanvas("c1", "Average rainfall", 800, 600);
+  //linear fit
+  TF1* lin_fit = new TF1("lin_fit", "pol1", firstYear, lastYear + 1);
+
+  hist->Fit(lin_fit, "R"); // R=used specified range of histogram for fitting
+    
+  double slope = lin_fit->GetParameter(1); //gets slope of linear fit
+
+  TCanvas* c1 = new TCanvas("c1", "Average daily rainfall 1863-2022", 800, 600);
+  hist->SetTitle("Average daily rainfall 1863-2022;Rainfall(mm);Year;Average Rainfall [mm]");
   hist->Draw("HIST c");
+  lin_fit->Draw("same");
+
+  TLatex text;  //copied from Marie-Philine
+    text.SetNDC(); 
+    text.SetTextSize(0.05);
+    text.DrawLatex(0.2, 0.2, Form("slope: %.4f mm/Year", slope));
+
   c1->SaveAs("rain_vs_years.pdf");
 }
