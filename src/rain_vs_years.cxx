@@ -68,9 +68,14 @@ RainVsYears::RainVsYears(const std::string &fileName) : dataFile(fileName) {}
   double slope = lin_fit->GetParameter(1); //gets slope of linear fit
 
   TCanvas* c1 = new TCanvas("c1", "Average rainfall", 800, 600);
+  histogram->SetTitle("Average yearly temperature;Year;Average Temperature [#circC]");
   hist->Draw("HIST c");
   lin_fit->Draw();
 
-  
+  TLatex text;  //copied from Marie-Philine
+    text.SetNDC(); 
+    text.SetTextSize(0.05);
+    text.DrawLatex(0.2, 0.2, Form("slope: %.4f #circC/Year", slope));
+
   c1->SaveAs("rain_vs_years.pdf");
 }
