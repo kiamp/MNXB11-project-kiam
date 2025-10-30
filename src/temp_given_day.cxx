@@ -140,6 +140,8 @@ void temp_given_day::CreateHistogram() {
 
     // combined histogram
     gStyle->SetOptStat(0); // prevent new stats boxes
+    histogram_1->SetStats(0);
+    histogram_2->SetStats(0);
     histogram_1->SetTitle(""); 
     histogram_2->SetTitle(""); //getting rid of the previous titles
     auto canvas3 = new TCanvas("canvas3","", 800, 600);
