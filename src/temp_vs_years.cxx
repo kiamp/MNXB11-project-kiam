@@ -103,23 +103,24 @@ void temp_vs_years::CreateHistogram() {
     
 
     auto c1 = new TCanvas("c1","",800,600);
-    c1->SetTopMargin(0.15);
-    histogram->SetTitle("Average yearly temperature;Year;Average Temperature [#circC]");
-    histogram->Draw(); //"E" for standard deviation
+    //c1->SetTopMargin(0.15);
+    histogram->SetTitle("Average yearly temperature from 1780-2022;Year;Average Temperature [#circC]");
+    histogram->Draw(); 
     lin_fit->Draw("same");
 
+    /*
     TLatex title; //for printing on canvas
     title.SetNDC(); //normalized coordinates (0-1) starts in lower left corner
     title.SetTextSize(0.05);
-    title.DrawLatex(0.21, 0.92, "Average yearly temperature over the years");
-
+    title.DrawLatex(0.21, 0.92, "Average yearly temperature from 1780 - 2022.");
+    */
     TLatex text; 
     text.SetNDC(); 
     text.SetTextSize(0.05);
     text.DrawLatex(0.2, 0.2, Form("slope: %.4f #circC/Year", slope));
 
 
-    //c1->SaveAs("temperature_vs_years.pdf");
+    c1->SaveAs("temperature_vs_years_stdev.pdf");
 }
 
 
