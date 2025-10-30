@@ -1,4 +1,4 @@
-#include "rain_vs_years.h"
+#include "../include/rain_vs_years.h"
 
 RainVsYears::RainVsYears() {}
 RainVsYears::RainVsYears(const std::string &fileName) : dataFile(fileName) {}
@@ -67,15 +67,15 @@ RainVsYears::RainVsYears(const std::string &fileName) : dataFile(fileName) {}
     
   double slope = lin_fit->GetParameter(1); //gets slope of linear fit
 
-  TCanvas* c1 = new TCanvas("c1", "Average rainfall", 800, 600);
-  histogram->SetTitle("Average yearly temperature;Year;Average Temperature [#circC]");
+  TCanvas* c1 = new TCanvas("c1", "Average daily rainfall 1863-2022", 800, 600);
+  hist->SetTitle("Average daily rainfall 1863-2022;Rainfall(mm);Year;Average Rainfall [mm]");
   hist->Draw("HIST c");
-  lin_fit->Draw();
+  lin_fit->Draw("same");
 
   TLatex text;  //copied from Marie-Philine
     text.SetNDC(); 
     text.SetTextSize(0.05);
-    text.DrawLatex(0.2, 0.2, Form("slope: %.4f #circC/Year", slope));
+    text.DrawLatex(0.2, 0.2, Form("slope: %.4f mm/Year", slope));
 
   c1->SaveAs("rain_vs_years.pdf");
 }
