@@ -1,9 +1,9 @@
 #include "../include/rain_vs_years.h"
 
 RainVsYears::RainVsYears() {}
-RainVsYears::RainVsYears(const std::string &fileName) : dataFile(fileName) {}
+RainVsYears::RainVsYears(const std::string& fileName) : dataFile(fileName) {}
 
-          void RainVsYears::ReadAndDraw() {
+void RainVsYears::ReadAndDraw() {
   std::ifstream file(dataFile);
   std::string line;          // will hold the line that is read
   std::getline(file, line);  // reads and ignores first line(column describer)
@@ -17,8 +17,9 @@ RainVsYears::RainVsYears(const std::string &fileName) : dataFile(fileName) {}
     std::string date;
     double rainfall;
 
-    if (!(ss >> date >> rainfall)) //read file, assign value to date and rainfall
-      continue;  // if line can't be extracted, continue still
+    if (!(ss >> date >>
+          rainfall))  // read file, assign value to date and rainfall
+      continue;       // if line can't be extracted, continue still
 
     int year =
         std::stoi(date.substr(0, 4));  // extract the year, convet to integer
@@ -38,8 +39,8 @@ RainVsYears::RainVsYears(const std::string &fileName) : dataFile(fileName) {}
   avgRains.reserve(nYears);
 
   for (const auto& [year, value] :
-       yearly_data) {  // unpacks the value pair into two variables. ChatGPT
-                       // helped with formulating
+       yearly_data) {  // unpacks the value pair into two variables.
+                       // ChatGPT helped with formulating
     double avg = value.first / value.second;  // calculate average rainfall
     years.push_back(year);
     avgRains.push_back(avg);
@@ -50,9 +51,8 @@ RainVsYears::RainVsYears(const std::string &fileName) : dataFile(fileName) {}
 
   // DRAWING HISTOGRAM
 
-  TH1D* hist =
-      new TH1D("hist", "Average rain each year;Year;Avg daily rainfall(mm)",
-               nYears, firstYear, lastYear + 1);
+  TH1D* hist = new TH1D("hist", "Average rain each year", nYears, firstYear,
+                        lastYear + 1);
 
   for (int i = 0; i < nYears; i++) {
     hist->Fill(years[i], avgRains[i]);
@@ -60,22 +60,21 @@ RainVsYears::RainVsYears(const std::string &fileName) : dataFile(fileName) {}
 
   hist->SetLineColor(38);
 
-  //linear fit
+  // linear fit from Marie-Philine
   TF1* lin_fit = new TF1("lin_fit", "pol1", firstYear, lastYear + 1);
+  hist->Fit(lin_fit, "R");  // R=used specified range of histogram for fitting
+  double slope = lin_fit->GetParameter(1);  // gets slope of linear fit
 
-  hist->Fit(lin_fit, "R"); // R=used specified range of histogram for fitting
-    
-  double slope = lin_fit->GetParameter(1); //gets slope of linear fit
-
+  // draw Histogram and fit
   TCanvas* c1 = new TCanvas("c1", "Average daily rainfall 1863-2022", 800, 600);
-  hist->SetTitle("Average daily rainfall 1863-2022;Rainfall(mm);Year;Average Rainfall [mm]");
+  hist->SetTitle("Average daily rainfall 1863-2022;Year;Rainfall [mm]");
   hist->Draw("HIST c");
   lin_fit->Draw("same");
 
-  TLatex text;  //copied from Marie-Philine
-    text.SetNDC(); 
-    text.SetTextSize(0.05);
-    text.DrawLatex(0.2, 0.2, Form("slope: %.4f mm/Year", slope));
+  TLatex text;  // Print slope number, from Marie-Philine
+  text.SetNDC();
+  text.SetTextSize(0.02);
+  text.DrawLatex(0.2, 0.2, Form("slope: %.4f mm/Year", slope));
 
   c1->SaveAs("plots/rain_vs_years.pdf");
 }
