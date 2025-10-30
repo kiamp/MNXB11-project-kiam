@@ -164,3 +164,10 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* Added the piece on data for a given day from our shared google doc to workplan.md
 	* Updated the Changelog with everything from today
 
+2025-10-30 Marie-Philine Hebel  <ma3648he@student.lu.se>
+
+	The plots are now being saved in plots/.
+
+	* edited the path in the cxx files
+	* updated ChangeLog
+

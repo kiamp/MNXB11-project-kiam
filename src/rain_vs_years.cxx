@@ -77,5 +77,5 @@ RainVsYears::RainVsYears(const std::string &fileName) : dataFile(fileName) {}
     text.SetTextSize(0.05);
     text.DrawLatex(0.2, 0.2, Form("slope: %.4f mm/Year", slope));
 
-  c1->SaveAs("rain_vs_years.pdf");
+  c1->SaveAs("plots/rain_vs_years.pdf");
 }

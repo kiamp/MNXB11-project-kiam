@@ -96,7 +96,7 @@ void temp_vs_years::CreateHistogram() {
     histogram->SetBinContent(
         i + 1,
         yearly_averages[i]);  // fill bins with values, bin count starts at 1
-    histogram->SetBinError(i + 1, st_dev[i]);
+    //histogram->SetBinError(i + 1, st_dev[i]);
   }
 
   // linear fit
@@ -118,7 +118,7 @@ void temp_vs_years::CreateHistogram() {
   TLatex text; // for printing on canvas
   text.SetNDC(); // normalized coordinates (0-1) starts in lower left corner
   text.SetTextSize(0.05);
-  text.DrawLatex(0.13, 0.8, Form("slope: %.4f #circC/Year", slope));
+  text.DrawLatex(0.13, 0.82, Form("slope: %.4f #circC/Year", slope));
 
-  c1->SaveAs("temperature_vs_years_stdev.pdf");
+  c1->SaveAs("plots/temperature_vs_years.pdf");
 }
