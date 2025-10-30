@@ -1,4 +1,4 @@
-#include "/home/deboer/git/MNXB11-project/include/temp_given_day.h"
+#include "../include/temp_given_day.h"
 #include <iostream>
 #include <fstream> //for reading the file
 #include <numeric>
@@ -17,7 +17,7 @@ temp_given_day::temp_given_day(const std::string &filename) : inputFilename(file
 
 
 void temp_given_day::ReadFile() {
-    std::ifstream file("/home/deboer/git/MNXB11-project/datasets/lund_cleaned.txt"); //! needs to be changed if position of lund_cleaned.txt is moved 
+    std::ifstream file(inputFilename); //! needs to be changed if position of lund_cleaned.txt is moved 
     std::string date, time; //initialize variables
     double degrees;
 
