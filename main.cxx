@@ -12,7 +12,7 @@ int main() {
    t_vs_y.GetYearlyAverage();
    t_vs_y.CreateHistogram();
    return 0;
- }
+ }*/
 
 int main() {
 
@@ -23,7 +23,7 @@ int main() {
   t_vs_e.CreateHistogram();
 
   return 0;
-}*/
+}
 
 int main() {
     RainVsYears r_vs_y("./datasets/lund_cleaned_rain.txt");
@@ -33,9 +33,9 @@ int main() {
 
 /*int main() {
 
-  rain_given_day r_vs_e("./datasets/lund_cleaned_rain.txt");
-  r_vs_e.ReadFile();
-  r_vs_e.CreateHistogram();
+//   rain_given_day r_vs_e("./datasets/lund_cleaned_rain.txt");
+//   r_vs_e.ReadFile();
+//   r_vs_e.CreateHistogram();
 
   return 0;
 }*/

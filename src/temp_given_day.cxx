@@ -8,6 +8,7 @@
 #include "TH1D.h"
 #include "TF1.h"
 #include "TLatex.h"
+#include "TStyle.h"
 
 
 // default constructor - ROOT needs the default one where everything is set to 0
@@ -137,4 +138,21 @@ void temp_given_day::CreateHistogram() {
     text2.SetTextSize(0.05);
 
     canvas2->SaveAs("temperature_given_day_2.pdf");
+
+    // combined histogram
+
+    gStyle->SetOptStat(0); // prevent new stats boxes
+    histogram_1->SetTitle("Temperature on 15/02 in 1863-1913 (blue) & 1972-2022 (red)"); 
+    histogram_2->SetTitle(""); //getting rid of the previous titles
+    auto canvas3 = new TCanvas("combined canvas","",800,600);
+    histogram_1->Draw();
+    histogram_2->Draw("SAME");
+
+    canvas3->Update(); // force ROOT to draw everything
+
+    TLatex text3; //for printing on canvas
+    text3.SetNDC(); //normalized coordinates (0-1) starts in lower left corner
+    text3.SetTextSize(0.05);
+
+    canvas3->SaveAs("combined_temperature_given_day.pdf");
 }
