@@ -111,19 +111,14 @@ void temp_vs_years::CreateHistogram() {
   histogram->SetTitle(
       "Average yearly temperature from 1780-2022;Year;Average Temperature "
       "[#circC]");
+  histogram->SetStats(false);
   histogram->Draw();
   lin_fit->Draw("same");
 
-  /*
-  TLatex title; //for printing on canvas
-  title.SetNDC(); //normalized coordinates (0-1) starts in lower left corner
-  title.SetTextSize(0.05);
-  title.DrawLatex(0.21, 0.92, "Average yearly temperature from 1780 - 2022.");
-  */
-  TLatex text;
-  text.SetNDC();
+  TLatex text; // for printing on canvas
+  text.SetNDC(); // normalized coordinates (0-1) starts in lower left corner
   text.SetTextSize(0.05);
-  text.DrawLatex(0.2, 0.2, Form("slope: %.4f #circC/Year", slope));
+  text.DrawLatex(0.13, 0.8, Form("slope: %.4f #circC/Year", slope));
 
   c1->SaveAs("temperature_vs_years_stdev.pdf");
 }
