@@ -139,16 +139,15 @@ void temp_given_day::CreateHistogram() {
     canvas2->SaveAs("temperature_given_day_2.pdf");
 
     // combined histogram
+    gStyle->SetOptStat(0); // prevent new stats boxes
     auto canvas3 = new TCanvas("canvas3","", 800, 600);
 
     histogram_1->Draw();
     histogram_2->Draw("SAME");
-    gStyle->SetOptStat(0); // prevent new stats boxes
+    
     histogram_1->SetTitle(""); 
     histogram_2->SetTitle(""); //getting rid of the previous titles
     
-
-    // canvas3->Update(); // force ROOT to draw everything
 
     auto legend = new TLegend(0.65, 0.75, 0.9, 0.9);
     legend->AddEntry(histogram_1, "1863-1913", "f");
