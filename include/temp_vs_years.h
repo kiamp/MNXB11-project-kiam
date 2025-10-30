@@ -18,6 +18,7 @@ public:
     std::vector<int> years; //all years in lund_cleaned.txt 
     std::vector<double> yearly_averages; //computed yearly avarages
     std::vector<int> unique_years; //each year only once 
+    std::vector<double> st_dev;
     
     
     double slope = 0.0; //initializing slope of linear fit
