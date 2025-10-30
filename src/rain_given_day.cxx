@@ -73,7 +73,7 @@ void rain_given_day::CreateHistogram() {
   text.SetNDC();  // normalized coordinates (0-1) starts in lower left corner
   text.SetTextSize(0.05);
 
-  canvas1->SaveAs("rainfall_given_day_1.pdf");
+  canvas1->SaveAs("plots/rainfall_given_day_1.pdf");
 
   // repeat for second period
   auto *histogram_2 = new TH1D(
@@ -94,7 +94,7 @@ void rain_given_day::CreateHistogram() {
   text2.SetNDC();  // normalized coordinates (0-1) starts in lower left corner
   text2.SetTextSize(0.05);
 
-  canvas2->SaveAs("rainfall_given_day_2.pdf");
+  canvas2->SaveAs("plots/rainfall_given_day_2.pdf");
 
   // combined histogram
   gStyle->SetOptStat(0);  // prevent new stats boxes
@@ -111,5 +111,5 @@ void rain_given_day::CreateHistogram() {
   text3.SetNDC();  // normalized coordinates (0-1) starts in lower left corner
   text3.SetTextSize(0.05);
 
-  canvas3->SaveAs("combined_rainfall_given_day.pdf");
+  canvas3->SaveAs("plots/combined_rainfall_given_day.pdf");
 };

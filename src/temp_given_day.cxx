@@ -119,7 +119,7 @@ void temp_given_day::CreateHistogram() {
     text.SetNDC(); //normalized coordinates (0-1) starts in lower left corner
     text.SetTextSize(0.05);
 
-    canvas1->SaveAs("temperature_given_day_1.pdf");
+    canvas1->SaveAs("plots/temperature_given_day_1.pdf");
 
     // repeat for second period
     auto *histogram_2 = new TH1D("histogram2", "Temperature on 15/02 from 1972-2022 ;Temperature [#circC];Entries", 50, -15, 15);
@@ -136,7 +136,7 @@ void temp_given_day::CreateHistogram() {
     text2.SetNDC(); //normalized coordinates (0-1) starts in lower left corner
     text2.SetTextSize(0.05);
 
-    canvas2->SaveAs("temperature_given_day_2.pdf");
+    canvas2->SaveAs("plots/temperature_given_day_2.pdf");
 
     // combined histogram
     gStyle->SetOptStat(0); // prevent new stats boxes
@@ -159,5 +159,5 @@ void temp_given_day::CreateHistogram() {
     text3.SetTextSize(0.05);
     text3.DrawLatex(0.15, 0.92, "Temperature on 15th of February");
 
-    canvas3->SaveAs("combined_temperature_given_day.pdf");
+    canvas3->SaveAs("plots/combined_temperature_given_day.pdf");
 }
