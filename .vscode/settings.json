@@ -63,6 +63,7 @@
         "thread": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp",
-        "hist_gen_mod.C": "cpp"
+        "hist_gen_mod.C": "cpp",
+        "rootlogon.C": "cpp"
     }
 }
