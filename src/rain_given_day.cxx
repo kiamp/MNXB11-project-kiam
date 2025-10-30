@@ -8,6 +8,7 @@
 #include "TH1D.h"
 #include "TF1.h"
 #include "TLatex.h"
+#include "TStyle.h"
 
 // default constructor - ROOT needs the default one where everything is set to 0
 rain_given_day::rain_given_day() {}
@@ -16,7 +17,11 @@ rain_given_day::rain_given_day(const std::string &filename) : inputFilename(file
 
 //just going through the file and appending years_1, rain_1, years_2, rain_2 if we are in the selected 50 year period and the date is 15.2
 void rain_given_day::ReadFile() {
-    std::ifstream file("../datasets/lund_cleaned_rain.txt"); //! needs to be changed if position of lund_cleaned.txt is moved 
+    std::ifstream file(inputFilename); //! needs to be changed if position of lund_cleaned.txt is moved 
+     if (!file.is_open()) {
+        std::cerr << "Error: Could not open file " << inputFilename << std::endl;
+        return;
+    }
     std::string date; //initialize variables
     double rain;
 
@@ -47,9 +52,10 @@ void rain_given_day::CreateHistogram() {
     std::cout << "Period 1: " << rain_1.size() << " entries" << std::endl;
     std::cout << "Period 2: " << rain_2.size() << " entries" << std::endl;
     // first period
-    auto *histogram_1 = new TH1D("histogram1", "Rainfall on 15/02 from 1863-1913 ;Rainfall [#circC];Entries", 50, -15, 15);
+    auto *histogram_1 = new TH1D("histogram1", "Rainfall on 15/02 from 1863-1913 ;Rainfall [mm];Entries", 50, 0, 12);
     histogram_1->SetFillColor(kBlue +1); //colour of bars is blue
     histogram_1->SetLineColor(kBlack); //outline black
+    histogram_1->SetFillStyle(3004); //sets special coloring so we can distinguish them when both drawn together
     for (size_t i =0 ; i< years_1.size(); ++i) {
         histogram_1->Fill(rain_1[i]);
     }
@@ -64,9 +70,10 @@ void rain_given_day::CreateHistogram() {
     canvas1->SaveAs("rainfall_given_day_1.pdf");
 
     // repeat for second period
-    auto *histogram_2 = new TH1D("histogram2", "Rainfall on 15/02 from 1972-2022 ;Rainfall [#circC];Entries", 50, -15, 15);
-    histogram_2->SetFillColor(kBlue +1); //colour of bars is blue
+    auto *histogram_2 = new TH1D("histogram2", "Rainfall on 15/02 from 1972-2022 ;Rainfall [mm];Entries", 50, 0, 12);
+    histogram_2->SetFillColor(kRed +1); //colour of bars is blue
     histogram_2->SetLineColor(kBlack); //outline black
+    histogram_2->SetFillStyle(3005); //sets special coloring so we can distinguish them when both drawn together
     for (size_t j =0 ; j< years_2.size(); ++j) {
         histogram_2->Fill(rain_2[j]);
     }
@@ -79,4 +86,20 @@ void rain_given_day::CreateHistogram() {
     text2.SetTextSize(0.05);
 
     canvas2->SaveAs("rainfall_given_day_2.pdf");
+
+    //combined histogram
+    gStyle->SetOptStat(0); // prevent new stats boxes
+    histogram_1->SetTitle("Rainfall on 15/02 in 1863-1913 (blue) & 1972-2022 (red)"); 
+    histogram_2->SetTitle(""); //getting rid of the previous titles
+    auto canvas3 = new TCanvas("combined canvas","",800,600);
+    histogram_1->Draw();
+    histogram_2->Draw("SAME");
+
+    canvas3->Update(); // force ROOT to draw everything
+
+    TLatex text3; //for printing on canvas
+    text3.SetNDC(); //normalized coordinates (0-1) starts in lower left corner
+    text3.SetTextSize(0.05);
+
+    canvas3->SaveAs("combined_rainfall_given_day.pdf");
 };

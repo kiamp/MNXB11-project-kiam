@@ -2,7 +2,9 @@
 #include <iostream>
 #include "./include/temp_vs_years.h"
 #include "./include/temp_given_day.h"
+#include "./include/rain_given_day.h"
 
+/*
 int main() {
 
    temp_vs_years t_vs_y("./datasets/lund_cleaned.txt");
@@ -10,7 +12,7 @@ int main() {
    t_vs_y.GetYearlyAverage();
    t_vs_y.CreateHistogram();
    return 0;
- }
+ }*/
 /*
 int main() {
 
@@ -22,3 +24,12 @@ int main() {
 
   return 0;
 }*/
+
+int main() {
+
+  rain_given_day r_vs_e("./datasets/lund_cleaned_rain.txt");
+  r_vs_e.ReadFile();
+  r_vs_e.CreateHistogram();
+
+  return 0;
+}
