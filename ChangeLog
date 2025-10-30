@@ -23,6 +23,14 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* Instructions how to reuse the code are added as comments. It is reusable for other datasets but certain variables have to be changed manually inside the code.
 	* The cleaned data can be found at datasets/lund_cleaned.txt
 
+2025-10-23 Ivana Varsányiová <iv1308va@student.lu.se>
+
+	Cleaning up the raw data for temperature in Lund
+
+	* Preprocessed the raw data in Google colab using Python and the Pandas library
+	* Created file onlynumbers-smhi-opendata_1_53430_20231007_155558_Lund.csv, it is the original file with temperatures in Lund manually cleaned, so now it has only numbers in it and no words explaining the data
+	* Created three separate datasets, date_list.txt, temp_list.txt and time_list.txt, each has the corresponding data, one entry per line, no semicoloms separating them
+
 2025-10-24 Marie-Philine Hebel  <ma3648he@student.lu.se>
 
 	Cleaning up the raw data for rainfall in Lund. 
@@ -63,6 +71,17 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 
 	* Added the changes I made to this file
 
+2025-10-29 Ivana Varsányiová <iv1308va@student.lu.se>
+
+	Implemetation of code to plot histogram of rainfall on 15/02 against entries, for two periods
+
+	* The header file include/rain_given_day.h includes the class rain_given_day
+	* The functions are defined in rain_given_day.cxx
+	* Added the cxx file to Makefile
+	* Added part to main to call on functions
+	* Two histograms were saved as pdf's
+	* Changed the rain_given_day.cxx in a way that implements third histogram that combining the two periods into one graph, also saved as pdf
+
 2025-10-30 Kiam Persson <li8211pe-s@student.lu.se>
 
 	Added polished code to plot a years average daily rainfall against years.
@@ -73,3 +92,10 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* Added call to ReadAndDraw in main.cxx, with datasets/lund_cleaned_rain.txt as parameter.
 	* Histogram result saved in rain_vs_years.h
 
+2025-10-30 Ivana Varsányiová <iv1308va@student.lu.se>
+
+	Updated chanelog, cleaned up datasets
+
+	* Added changes to this change log
+	* Moved files date_list.txt, temp_list.txt and time_list.txt from the main repository to the datasets subrepository
+	* Deleted file smhi-opendata_5_53430_20251024_082317.csv from the datasets repository
