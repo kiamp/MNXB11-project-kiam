@@ -65,6 +65,10 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* I added all the major changes that were made by me (Marie-Philine). 
 	* Renamed the original changelog with examples to ChangeLog_example, this can be deleted later
 
+2025-10-29 Marie-Philine Hebel  <ma3648he@student.lu.se>
+
+	Absolute paths were changed to relative paths in all documents
+
 2025-10-29 Dominique Iris de Boer <do6140de-s@student.lu.se>
 
 	Changelog updated
@@ -92,6 +96,18 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* Added call to ReadAndDraw in main.cxx, with datasets/lund_cleaned_rain.txt as parameter.
 	* Histogram result saved in rain_vs_years.h
 
+2025-10-30 Marie-Philine Hebel  <ma3648he@student.lu.se>
+
+	Added a standard deviation to the temp_vs_years class
+
+	*The standard deviation for all the temperature values is computed for each year and added to the plot 
+	*The plot without the standard deviation still exists. 
+
+2025-10-30 Marie-Philine Hebel  <ma3648he@student.lu.se>
+
+	Updated main. Now all functions are called at once.
+
+
 2025-10-30 Ivana Varsányiová <iv1308va@student.lu.se>
 
 	Updated chanelog, cleaned up datasets
@@ -107,3 +123,10 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* Formatted using the Google-style.
 	* Formatted src/rain_given_day.cxx src/temp_vs_years.cxx and src/temp_given_day.cxx
 	* Removed src/practice.cxx
+
+2025-10-30 Marie-Philine Hebel  <ma3648he@student.lu.se>
+
+	Updated ChangeLog and Workplan. 
+
+	*I added my part of the Workplan (from Google docs) to the Worklan in this directory. 
+
